@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="practice-token" content="__PRACTICE_TOKEN__">
   <title>Physics practice</title>
+  <link rel="stylesheet" href="/vendor/latex/latex.css">
+  <link rel="stylesheet" href="/vendor/katex/katex.min.css">
   <link rel="stylesheet" href="/vendor/codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="/vendor/codemirror/addon/hint/show-hint.css">
   <link rel="stylesheet" href="/style.css">
@@ -14,18 +16,57 @@
   <script src="/vendor/codemirror/addon/hint/show-hint.js" defer></script>
   <script src="/vendor/codemirror/addon/edit/matchbrackets.js" defer></script>
   <script src="/editor.js" defer></script>
-  <script src="/app.js" defer></script>
+  <script src="/vendor/katex/katex.min.js" defer></script>
+  <script src="/diagrams.js" defer></script>
+  <script src="/practice.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Physics practice</h1>
-    <div class="set-controls">
-      <label for="practice-set">Practice set</label>
-      <select id="practice-set" disabled><option>Loading…</option></select>
-      <a id="source" target="_blank" rel="noopener" hidden>Original PDF</a>
-      <span id="progress">0 of 10 complete</span>
-    </div>
+  <header class="masthead">
+    <a href="/" id="home-link" class="brand">Physics practice</a>
+    <span class="course">PH-UY 1013 · Mechanics</span>
+    <button id="show-skills" class="text-button" type="button" aria-expanded="false" aria-controls="skills-panel">Skill chart</button>
   </header>
+  <main id="home" class="study-home">
+    <h1>What do you want to study?</h1>
+    <p id="bank-summary" class="home-intro">Loading your question bank…</p>
+    <form id="study-form">
+      <fieldset class="study-options" id="mode-options" disabled>
+        <legend class="sr-only">Study mode</legend>
+        <label><input type="radio" name="mode" value="random" checked><span><strong>Random questions</strong><small>A little of everything.</small></span></label>
+        <label><input type="radio" name="mode" value="midterm-random"><span><strong>Midterm (randomized)</strong><small>Match a format or choose a count.</small></span></label>
+        <label><input type="radio" name="mode" value="midterm-paper"><span><strong>Midterm (choose sem + year)</strong><small>Work through an original paper.</small></span></label>
+        <label><input type="radio" name="mode" value="exam-random"><span><strong>Exam (randomized)</strong><small>Practice across the final-exam units.</small></span></label>
+        <label><input type="radio" name="mode" value="exam-paper"><span><strong>Exam (choose sem + year)</strong><small>Choose a semester's final exam.</small></span></label>
+        <label><input type="radio" name="mode" value="unit"><span><strong>Select a unit</strong><small>Spend time on one topic.</small></span></label>
+      </fieldset>
+      <div id="study-settings" class="study-settings">
+        <div id="format-field" class="field" hidden><label for="random-format">Question selection</label><select id="random-format"><option value="balanced">Follow a paper's general format</option><option value="count">Random questions — choose how many</option></select></div>
+        <div id="paper-fields" class="paper-fields" hidden>
+          <div class="field"><label for="paper-semester">Semester</label><select id="paper-semester"></select></div>
+          <div class="field"><label for="paper-year">Year</label><select id="paper-year"></select></div>
+          <div class="field" id="version-field"><label for="paper-version">Version</label><select id="paper-version"></select></div>
+        </div>
+        <div id="unit-field" class="field" hidden><label for="study-unit">Unit</label><select id="study-unit"></select></div>
+        <div id="count-field" class="field"><label for="question-count">How many questions?</label><input id="question-count" type="number" min="1" max="100" value="10" required></div>
+        <label id="variation-field" class="check-label"><input type="checkbox" id="use-variations" checked>Include versions with new numbers</label>
+      </div>
+      <div class="start-row"><p id="session-preview" role="status"></p><button id="start-study" class="primary" type="submit" disabled>Start studying</button></div>
+      <p id="home-error" class="error-message" role="alert" hidden></p>
+    </form>
+    <div class="home-secondary"><button id="resume" class="text-button" hidden type="button">Continue previous session</button><button id="open-homework" class="text-button" type="button">Open Homework 8</button></div>
+  </main>
+  <section id="skills-panel" class="skills-panel" aria-labelledby="skills-title" hidden>
+    <div class="section-heading"><h2 id="skills-title">Your skill chart</h2><button id="close-skills" class="text-button" type="button">Close</button></div>
+    <p>Each bar shows solved question types. Passing every test case marks a type solved.</p>
+    <div id="skill-chart" class="skill-chart"></div>
+    <p class="small-note">Select a unit to practice it. Progress is saved in this browser.</p>
+  </section>
+  <div id="workspace" hidden>
+    <div class="session-toolbar">
+      <button id="change-study" class="text-button" type="button">Change study</button>
+      <span id="session-title"></span>
+      <span id="progress"></span>
+    </div>
   <div class="layout">
     <nav aria-label="Practice problems">
       <h2>Problems</h2>
@@ -33,12 +74,18 @@
       <label class="mobile-picker" for="problem-picker">Problem</label>
       <select id="problem-picker"></select>
     </nav>
-    <main>
-      <h2 id="title">Loading problems…</h2>
-      <p id="description" class="description"></p>
-      <figure id="diagram" class="diagram" hidden></figure>
+    <main id="question-main">
+      <div class="question-meta"><span id="problem-meta"></span><a id="source" target="_blank" rel="noopener" hidden>Original PDF</a></div>
+      <h1 id="title">Loading questions…</h1>
+      <div class="question-layout">
+        <div><div id="description" class="question-prose"></div><dl id="givens" class="givens"></dl></div>
+        <figure id="diagram" class="diagram" hidden></figure>
+      </div>
+      <section class="coding-task"><h2>Write the function</h2><p id="task"></p></section>
+      <details id="tip-details" class="tip-details"><summary>Small tip</summary><p id="tip"></p></details>
+      <details id="equation-sheet" class="equation-sheet"><summary>Equation sheet <span id="equation-count"></span></summary><p class="small-note">Useful equations are highlighted for this question. Use g = 9.8 m/s² unless the input specifies otherwise.</p><div id="equations"></div></details>
       <details id="example-details">
-        <summary>Example</summary>
+        <summary>Example input &amp; expected result</summary>
         <pre id="example"></pre>
       </details>
       <div class="editor-heading">
@@ -86,7 +133,15 @@
           </table>
         </div>
       </section>
+      <div class="question-navigation"><button id="previous-question" class="secondary" type="button">Previous</button><span id="question-position"></span><button id="next-question" class="secondary" type="button">Next question</button></div>
     </main>
   </div>
+  </div>
+  <dialog id="diagram-viewer" aria-labelledby="diagram-viewer-title">
+    <div class="diagram-viewer-toolbar"><h2 id="diagram-viewer-title">Diagram</h2><button id="close-diagram" class="secondary" type="button">Close</button></div>
+    <p class="small-note">Scroll to inspect the full-size drawing.</p>
+    <div id="diagram-large" class="diagram-large"></div>
+  </dialog>
+  <footer class="colophon"><span>Work it out, one question at a time.</span><span>Python · C++20</span></footer>
 </body>
 </html>

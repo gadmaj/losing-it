@@ -1,0 +1,39 @@
+/* Hallmark · macrostructure: Workbench · tone: academic editorial · anchor hue: green
+ * theme: established LaTeX.css + CodingBat · nav: N3 Side-rail · footer: Ft2 Inline
+ * audience: mechanics student · use: start and solve practice questions · motion: cut
+ * pre-emit critique: P5 H4 E4 S5 R5 V4
+ */
+:root {
+  --color-paper: #fff;
+  --color-ink: #222a24;
+  --color-muted: #536057;
+  --color-rule: #d0d8d1;
+  --color-soft: #f3f6f3;
+  --color-accent: #245d34;
+  --color-accent-hover: #194a27;
+  --color-accent-ink: #fff;
+  --color-selection: #d9ecdd;
+  --color-error: #9c2424;
+  --color-error-paper: #fff4f2;
+  --color-keyword: #7138a1;
+  --color-string: #23633d;
+  --color-number: #1b58a0;
+  --color-comment: #68716b;
+  --color-function: #174d82;
+  --color-directive: #87520a;
+  --font-prose: 'Latin Modern Roman', Georgia, serif;
+  --font-ui: Arial, Helvetica, sans-serif;
+  --font-code: 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --text-small: 13px;
+  --text-body: 16px;
+  --rule-width: 1px;
+  --radius-sm: 3px;
+  --dur-short: 100ms;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}

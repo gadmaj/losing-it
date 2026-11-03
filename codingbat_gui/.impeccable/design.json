@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T03:22:57.512529+00:00",
+  "title": "Design System: Physics practice",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(27% 0.000 0.0)",
+          "oklch(39% 0.000 0.0)",
+          "oklch(51% 0.000 0.0)",
+          "oklch(63% 0.000 0.0)",
+          "oklch(75% 0.000 0.0)",
+          "oklch(87% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.014 135.0)",
+          "oklch(27% 0.014 135.0)",
+          "oklch(39% 0.014 135.0)",
+          "oklch(51% 0.014 135.0)",
+          "oklch(63% 0.014 135.0)",
+          "oklch(75% 0.014 135.0)",
+          "oklch(87% 0.014 135.0)",
+          "oklch(95% 0.014 135.0)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.009 138.5)",
+          "oklch(27% 0.009 138.5)",
+          "oklch(39% 0.009 138.5)",
+          "oklch(51% 0.009 138.5)",
+          "oklch(63% 0.009 138.5)",
+          "oklch(75% 0.009 138.5)",
+          "oklch(87% 0.009 138.5)",
+          "oklch(95% 0.009 138.5)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "tonalRamp": [
+          "oklch(15% 0.012 127.5)",
+          "oklch(27% 0.012 127.5)",
+          "oklch(39% 0.012 127.5)",
+          "oklch(51% 0.012 127.5)",
+          "oklch(63% 0.012 127.5)",
+          "oklch(75% 0.012 127.5)",
+          "oklch(87% 0.012 127.5)",
+          "oklch(95% 0.012 127.5)"
+        ]
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "Soft",
+        "tonalRamp": [
+          "oklch(15% 0.019 120.0)",
+          "oklch(27% 0.019 120.0)",
+          "oklch(39% 0.019 120.0)",
+          "oklch(51% 0.019 120.0)",
+          "oklch(63% 0.019 120.0)",
+          "oklch(75% 0.019 120.0)",
+          "oklch(87% 0.019 120.0)",
+          "oklch(95% 0.019 120.0)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Accent",
+        "tonalRamp": [
+          "oklch(15% 0.057 136.8)",
+          "oklch(27% 0.057 136.8)",
+          "oklch(39% 0.057 136.8)",
+          "oklch(51% 0.057 136.8)",
+          "oklch(63% 0.057 136.8)",
+          "oklch(75% 0.057 136.8)",
+          "oklch(87% 0.057 136.8)",
+          "oklch(95% 0.057 136.8)"
+        ]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Accent Hover",
+        "tonalRamp": [
+          "oklch(15% 0.064 137.1)",
+          "oklch(27% 0.064 137.1)",
+          "oklch(39% 0.064 137.1)",
+          "oklch(51% 0.064 137.1)",
+          "oklch(63% 0.064 137.1)",
+          "oklch(75% 0.064 137.1)",
+          "oklch(87% 0.064 137.1)",
+          "oklch(95% 0.064 137.1)"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "Accent Ink",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(27% 0.000 0.0)",
+          "oklch(39% 0.000 0.0)",
+          "oklch(51% 0.000 0.0)",
+          "oklch(63% 0.000 0.0)",
+          "oklch(75% 0.000 0.0)",
+          "oklch(87% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "selection": {
+        "role": "neutral",
+        "displayName": "Selection",
+        "tonalRamp": [
+          "oklch(15% 0.043 132.6)",
+          "oklch(27% 0.043 132.6)",
+          "oklch(39% 0.043 132.6)",
+          "oklch(51% 0.043 132.6)",
+          "oklch(63% 0.043 132.6)",
+          "oklch(75% 0.043 132.6)",
+          "oklch(87% 0.043 132.6)",
+          "oklch(95% 0.043 132.6)"
+        ]
+      },
+      "error": {
+        "role": "semantic",
+        "displayName": "Error",
+        "tonalRamp": [
+          "oklch(15% 0.081 0.0)",
+          "oklch(27% 0.081 0.0)",
+          "oklch(39% 0.081 0.0)",
+          "oklch(51% 0.081 0.0)",
+          "oklch(63% 0.081 0.0)",
+          "oklch(75% 0.081 0.0)",
+          "oklch(87% 0.081 0.0)",
+          "oklch(95% 0.081 0.0)"
+        ]
+      },
+      "error-paper": {
+        "role": "semantic",
+        "displayName": "Error Paper",
+        "tonalRamp": [
+          "oklch(15% 0.100 9.2)",
+          "oklch(27% 0.100 9.2)",
+          "oklch(39% 0.100 9.2)",
+          "oklch(51% 0.100 9.2)",
+          "oklch(63% 0.100 9.2)",
+          "oklch(75% 0.100 9.2)",
+          "oklch(87% 0.100 9.2)",
+          "oklch(95% 0.100 9.2)"
+        ]
+      },
+      "keyword": {
+        "role": "semantic",
+        "displayName": "Keyword",
+        "tonalRamp": [
+          "oklch(15% 0.063 272.6)",
+          "oklch(27% 0.063 272.6)",
+          "oklch(39% 0.063 272.6)",
+          "oklch(51% 0.063 272.6)",
+          "oklch(63% 0.063 272.6)",
+          "oklch(75% 0.063 272.6)",
+          "oklch(87% 0.063 272.6)",
+          "oklch(95% 0.063 272.6)"
+        ]
+      },
+      "string": {
+        "role": "semantic",
+        "displayName": "String",
+        "tonalRamp": [
+          "oklch(15% 0.062 144.4)",
+          "oklch(27% 0.062 144.4)",
+          "oklch(39% 0.062 144.4)",
+          "oklch(51% 0.062 144.4)",
+          "oklch(63% 0.062 144.4)",
+          "oklch(75% 0.062 144.4)",
+          "oklch(87% 0.062 144.4)",
+          "oklch(95% 0.062 144.4)"
+        ]
+      },
+      "number": {
+        "role": "semantic",
+        "displayName": "Number",
+        "tonalRamp": [
+          "oklch(15% 0.092 212.5)",
+          "oklch(27% 0.092 212.5)",
+          "oklch(39% 0.092 212.5)",
+          "oklch(51% 0.092 212.5)",
+          "oklch(63% 0.092 212.5)",
+          "oklch(75% 0.092 212.5)",
+          "oklch(87% 0.092 212.5)",
+          "oklch(95% 0.092 212.5)"
+        ]
+      },
+      "comment": {
+        "role": "semantic",
+        "displayName": "Comment",
+        "tonalRamp": [
+          "oklch(15% 0.005 140.0)",
+          "oklch(27% 0.005 140.0)",
+          "oklch(39% 0.005 140.0)",
+          "oklch(51% 0.005 140.0)",
+          "oklch(63% 0.005 140.0)",
+          "oklch(75% 0.005 140.0)",
+          "oklch(87% 0.005 140.0)",
+          "oklch(95% 0.005 140.0)"
+        ]
+      },
+      "function": {
+        "role": "semantic",
+        "displayName": "Function",
+        "tonalRamp": [
+          "oklch(15% 0.091 209.7)",
+          "oklch(27% 0.091 209.7)",
+          "oklch(39% 0.091 209.7)",
+          "oklch(51% 0.091 209.7)",
+          "oklch(63% 0.091 209.7)",
+          "oklch(75% 0.091 209.7)",
+          "oklch(87% 0.091 209.7)",
+          "oklch(95% 0.091 209.7)"
+        ]
+      },
+      "directive": {
+        "role": "semantic",
+        "displayName": "Directive",
+        "tonalRamp": [
+          "oklch(15% 0.100 34.6)",
+          "oklch(27% 0.100 34.6)",
+          "oklch(39% 0.100 34.6)",
+          "oklch(51% 0.100 34.6)",
+          "oklch(63% 0.100 34.6)",
+          "oklch(75% 0.100 34.6)",
+          "oklch(87% 0.100 34.6)",
+          "oklch(95% 0.100 34.6)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Worksheet heading",
+        "purpose": "Startup heading."
+      },
+      "question": {
+        "displayName": "Question prose",
+        "purpose": "Academic scenarios and givens."
+      },
+      "body": {
+        "displayName": "UI text",
+        "purpose": "Controls and supporting text."
+      },
+      "code": {
+        "displayName": "Existing editor",
+        "purpose": "CodeMirror and code literals."
+      }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": [
+      {
+        "name": "worksheet-small",
+        "value": "42rem"
+      },
+      {
+        "name": "problem-picker",
+        "value": "700px"
+      },
+      {
+        "name": "question-columns",
+        "value": "68rem"
+      }
+    ],
+    "dialogBackdrop": {
+      "color": "var(--color-ink)",
+      "opacity": 0.3
+    },
+    "focus": {
+      "outline": "2px solid var(--color-accent)",
+      "offset": "3px"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Plain action control.",
+      "html": "<button class=\"ds-primary\">Start studying</button>",
+      "css": ".ds-primary{font-family:var(--font-ui,Arial,Helvetica,sans-serif);min-height:40px;background:var(--color-accent,#245d34);color:var(--color-accent-ink,#fff);border:1px solid var(--color-accent,#245d34);border-radius:var(--radius-sm,3px);padding:10px 22px;font-size:14px;cursor:pointer;}.ds-primary:hover{background:var(--color-accent-hover,#194a27);}.ds-primary:focus-visible{outline:2px solid var(--color-accent,#245d34);outline-offset:3px;}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Plain action control.",
+      "html": "<button class=\"ds-secondary\">Next question</button>",
+      "css": ".ds-secondary{font-family:var(--font-ui,Arial,Helvetica,sans-serif);min-height:40px;background:var(--color-paper,#fff);color:var(--color-accent,#245d34);border:1px solid var(--color-rule,#d0d8d1);border-radius:var(--radius-sm,3px);padding:8px 16px;font-size:14px;cursor:pointer;}.ds-secondary:hover{background:var(--color-soft,#f3f6f3);}.ds-secondary:focus-visible{outline:2px solid var(--color-accent,#245d34);outline-offset:3px;}"
+    },
+    {
+      "name": "Number field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "A labeled custom session count.",
+      "html": "<label class=\"ds-field\">How many questions?<input type=\"number\" value=\"10\" min=\"1\" max=\"100\"></label>",
+      "css": ".ds-field{font-family:var(--font-ui,Arial,Helvetica,sans-serif);display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--color-ink,#222a24);}.ds-field input{font-family:var(--font-ui,Arial,Helvetica,sans-serif);width:100px;min-height:40px;border:1px solid var(--color-rule,#d0d8d1);border-radius:3px;background:var(--color-paper,#fff);color:var(--color-ink,#222a24);padding:8px 10px;font-size:14px;}.ds-field input:focus-visible{outline:2px solid var(--color-accent,#245d34);outline-offset:3px;}"
+    },
+    {
+      "name": "Current problem",
+      "kind": "nav",
+      "description": "The active item in the desktop question rail.",
+      "html": "<nav class=\"ds-nav\"><button aria-current=\"page\">9. Ice in a Bowl on a Scale</button></nav>",
+      "css": ".ds-nav button{font-family:var(--font-ui,Arial,Helvetica,sans-serif);display:block;width:180px;min-height:44px;text-align:left;padding:7px 8px;border:0;border-radius:3px;color:var(--color-ink,#222a24);background:var(--color-selection,#d9ecdd);font-size:12px;font-weight:bold;cursor:pointer;}.ds-nav button:hover{background:var(--color-soft,#f3f6f3);}.ds-nav button:focus-visible{outline:2px solid var(--color-accent,#245d34);outline-offset:3px;}"
+    },
+    {
+      "name": "Study choice",
+      "kind": "custom",
+      "description": "A ruled startup radio row.",
+      "html": "<label class=\"ds-choice\"><input type=\"radio\" checked name=\"preview\"><span><strong>Random questions</strong><small>A little of everything.</small></span></label>",
+      "css": ".ds-choice{font-family:var(--font-ui,Arial,Helvetica,sans-serif);display:flex;align-items:flex-start;gap:12px;padding:16px 12px;border-top:1px solid var(--color-rule,#d0d8d1);color:var(--color-ink,#222a24);cursor:pointer;}.ds-choice:hover,.ds-choice:has(:checked){background:var(--color-soft,#f3f6f3);}.ds-choice input{accent-color:var(--color-accent,#245d34);width:16px;height:16px;margin:3px 0 0;}.ds-choice strong{display:block;font-size:14px;font-weight:600;}.ds-choice small{display:block;margin-top:2px;font-size:12px;color:var(--color-muted,#536057);}.ds-choice:has(:focus-visible){outline:2px solid var(--color-accent,#245d34);outline-offset:-2px;}"
+    },
+    {
+      "name": "Reference disclosure",
+      "kind": "custom",
+      "description": "Optional worksheet support.",
+      "html": "<details class=\"ds-disclosure\"><summary>Small tip</summary><p>Choose a system and a sign convention.</p></details>",
+      "css": ".ds-disclosure{font-family:var(--font-ui,Arial,Helvetica,sans-serif);font-size:13px;color:var(--color-ink,#222a24);}.ds-disclosure summary{min-height:32px;width:fit-content;cursor:pointer;color:var(--color-accent,#245d34);text-decoration:underline;text-underline-offset:3px;}.ds-disclosure summary:hover{color:var(--color-accent-hover,#194a27);}.ds-disclosure summary:focus-visible{outline:2px solid var(--color-accent,#245d34);outline-offset:3px;}.ds-disclosure p{padding:12px 16px;background:var(--color-soft,#f3f6f3);border:1px solid var(--color-rule,#d0d8d1);line-height:1.65;}"
+    },
+    {
+      "name": "Skill row",
+      "kind": "custom",
+      "description": "Solved families per unit; opens unit practice.",
+      "html": "<button class=\"ds-skill\"><span>Work &amp; energy</span><span class=\"ds-track\"><span></span></span><span>3 / 12</span></button>",
+      "css": ".ds-skill{font-family:var(--font-ui,Arial,Helvetica,sans-serif);display:grid;grid-template-columns:150px minmax(80px,1fr) 54px;gap:16px;align-items:center;width:100%;padding:10px 0;border:0;background:var(--color-paper,#fff);color:var(--color-ink,#222a24);text-align:left;font-size:13px;cursor:pointer;}.ds-skill:hover{background:var(--color-soft,#f3f6f3);}.ds-skill:focus-visible{outline:2px solid var(--color-accent,#245d34);outline-offset:3px;}.ds-track{height:8px;background:var(--color-soft,#f3f6f3);border:1px solid var(--color-rule,#d0d8d1);}.ds-track span{display:block;width:25%;height:100%;background:var(--color-accent,#245d34);}.ds-skill>span:last-child{font-size:12px;text-align:right;color:var(--color-muted,#536057);font-variant-numeric:tabular-nums;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Academic worksheet",
+    "overview": "Physics practice uses an academic worksheet as its visual authority: readable mathematical prose, precise diagrams, and a familiar code editor. Preserve the established green and white controls and the original CodeMirror theme. The exact bundled LaTeX.css from gadmaj/website supplies the typesetting foundation; application CSS adapts it to the workbench.\n\nInformation stays in a flat document flow with thin rules, optional disclosures, and explicit actions. Latin Modern gives questions their academic character, while Arial keeps controls compact and monospace preserves code structure.",
+    "keyCharacteristics": [
+      "Latin Modern worksheet prose and mathematical notation.",
+      "Plain green actions and thin neutral rules.",
+      "Original CodeMirror syntax colors and interaction model.",
+      "Responsive document flow with enlargable vector diagrams."
+    ],
+    "rules": [
+      {
+        "name": "Palette Continuity",
+        "body": "Preserve the established green/white controls and original editor syntax colors.",
+        "section": "colors"
+      },
+      {
+        "name": "Type Boundary",
+        "body": "Keep typeset question prose separate from the existing monospace editor and sans-serif controls.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Use Latin Modern for question prose and Arial for controls.",
+      "Preserve the green/white palette and the existing CodeMirror theme.",
+      "Keep the exam equation sheet in its source two-column order and highlight only task-specific formula IDs.",
+      "Allow local scrolling for code, long formulas, test tables, and enlarged diagrams."
+    ],
+    "donts": [
+      "Don't replace the worksheet with decorative cards or marketing sections.",
+      "Don't apply the serif question font to the editor or controls.",
+      "Don't recolor the editor as part of typesetting changes.",
+      "Don't require runtime TeX or network assets for normal use."
+    ]
+  }
+}

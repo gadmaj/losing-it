@@ -10,7 +10,8 @@ def problem(number, title, method, original, task, inputs, reference, diagram=No
     result = {"number": number, "title": title, "method": method,
               "description": original + "\n\nCoding task: " + task
               + "\nUse degrees for angle inputs and return an unrounded number. Use the supplied g where present.",
-              "arguments": list(inputs[0]), "cases": cases, "cppReturnType": "double"}
+              "arguments": list(inputs[0]), "cases": cases, "cppReturnType": "double",
+              "_reference": reference}
     if diagram:
         result["diagram"] = {"src": "/diagrams/" + diagram[0] + ".png", "alt": diagram[1]}
     return result

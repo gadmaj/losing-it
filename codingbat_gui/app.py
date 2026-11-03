@@ -14,6 +14,9 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlsplit
 
 from midterms import FALL, SPRING
+from question_bank import add_papers, UNITS
+from curriculum import enrich, sheet, practice_sheet
+from study import build_session, public_problem
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT.parent
@@ -75,6 +78,31 @@ SETS = {
     "midterm-s26": {"title": "Midterm · Spring 2026", "problems": SPRING, "file": "1013X1aS26.pdf"},
     "midterm-f25": {"title": "Midterm · Fall 2025", "problems": FALL, "file": "1013X1aF25.pdf"},
 }
+add_papers(SETS)
+for paper in SETS.values():
+    for task in paper["problems"]:
+        enrich(task)
+        add_starters(task)
+for directory in ("latex", "katex"):
+    for asset in (ROOT / "vendor" / directory).rglob("*"):
+        if asset.is_file() and asset.suffix in (".js", ".css", ".woff2"):
+            suffix_types={".js":"text/javascript", ".css":"text/css", ".woff2":"font/woff2"}
+            relative=asset.relative_to(ROOT).as_posix()
+            EDITOR_ASSETS["/"+relative]=(relative,suffix_types[asset.suffix])
+
+
+def catalog():
+    papers=[{"id":key,"title":value["title"],"count":len(value["problems"]),
+             "kind":value["kind"],"semester":value["semester"],"year":value["year"],"version":value["version"],
+             "source":"/sources/"+key+".pdf" if (SOURCE/value["file"]).is_file() else None,
+             "unitCounts":{unit:sum(p["unit"]==unit for p in value["problems"]) for unit in UNITS}}
+            for key,value in SETS.items()]
+    questions=[{k:p[k] for k in ("uid","set","number","unit","family","title")} for s in SETS.values() for p in s["problems"]]
+    return {"papers":papers,"units":[{"id":key,"title":title} for key,title in UNITS.items()],
+            "questions":questions,"equations":sheet(),"practiceSheet":practice_sheet(),"constants":{"g":9.8,"G":6.67e-11,"earthMass":5.97e24,"earthRadiusKm":6370},
+            "sources":[{"file":s["file"],"paper":key} for key,s in SETS.items()]+
+                      [{"file":"midterm.pdf","contains":[key for key,s in SETS.items() if s["kind"]=="midterm"]},
+                       {"file":"final.pdf","contains":[key for key,s in SETS.items() if s["kind"]=="exam"]}]}
 
 
 def execute(code, problem, language="python"):
@@ -123,13 +151,15 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
-        self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'")
+        self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'")
         self.end_headers()
         self.wfile.write(body)
 
     def do_GET(self):
         url = urlsplit(self.path)
         route = url.path
+        if route == "/api/catalog":
+            return self.send(200,catalog())
         if route == "/api/sets":
             return self.send(200, [{"id": key, "title": value["title"], "count": len(value["problems"]),
                                     "source": "/sources/" + key + ".pdf" if (SOURCE / value["file"]).is_file() else None}
@@ -138,12 +168,7 @@ class Handler(BaseHTTPRequestHandler):
             set_id = parse_qs(url.query).get("set", ["hw8"])[0]
             if set_id not in SETS:
                 return self.send(404, {"error": "Choose a practice set."})
-            public = []
-            for problem in SETS[set_id]["problems"]:
-                p = {k: problem[k] for k in ("number", "title", "method", "description", "starter", "cppStarter", "cppReturnType")}
-                p["example"] = problem["cases"][0]
-                p["diagram"] = problem.get("diagram")
-                public.append(p)
+            public = [public_problem(p) for p in SETS[set_id]["problems"]]
             return self.send(200, public)
         for set_id, practice_set in SETS.items():
             if route == "/sources/" + set_id + ".pdf":
@@ -152,24 +177,29 @@ class Handler(BaseHTTPRequestHandler):
                     return self.send(404, {"error": "Original PDF is not installed on this computer."})
                 return self.send(200, source_file.read_bytes(), "application/pdf")
         diagram_names = {p["diagram"]["src"] for p in SPRING + FALL if p.get("diagram")}
+        if route == "/diagrams/bowl.svg":
+            return self.send(200,(ROOT/"diagrams/bowl.svg").read_text(),"image/svg+xml")
         if route in diagram_names:
             return self.send(200, (ROOT / "diagrams" / Path(route).name).read_bytes(), "image/png")
         assets = {"/": ("index.html", "text/html; charset=utf-8"),
                   "/app.js": ("app.js", "text/javascript; charset=utf-8"),
                   "/syntax.js": ("syntax.js", "text/javascript; charset=utf-8"),
                   "/editor.js": ("editor.js", "text/javascript; charset=utf-8"),
+                  "/diagrams.js": ("diagrams.js", "text/javascript; charset=utf-8"),
+                  "/practice.js": ("practice.js", "text/javascript; charset=utf-8"),
+                  "/tokens.css": ("tokens.css", "text/css; charset=utf-8"),
                   "/style.css": ("style.css", "text/css; charset=utf-8")}
         assets.update(EDITOR_ASSETS)
         if route not in assets:
             return self.send(404, {"error": "Not found"})
         name, content_type = assets[route]
-        content = (ROOT / name).read_text()
+        content = (ROOT / name).read_bytes() if name.endswith(".woff2") else (ROOT / name).read_text()
         if name == "index.html":
             content = content.replace("__PRACTICE_TOKEN__", TOKEN)
         self.send(200, content, content_type)
 
     def do_POST(self):
-        if self.path != "/api/run":
+        if self.path not in ("/api/run","/api/session"):
             return self.send(404, {"error": "Not found"})
         token = self.headers.get("X-Practice-Token", "")
         if not hmac.compare_digest(token, TOKEN):
@@ -179,6 +209,12 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < length <= 65536:
                 return self.send(400, {"error": "Code is too long."})
             payload = json.loads(self.rfile.read(length))
+            if self.path == "/api/session":
+                if not isinstance(payload,dict):raise ValueError()
+                try:
+                    return self.send(200,build_session(SETS,payload))
+                except (ValueError,KeyError,TypeError) as error:
+                    return self.send(400,{"error":str(error) or "Choose a study mode and try again."})
             number = payload["problem"]
             code = payload["code"]
             language = payload.get("language", "python")

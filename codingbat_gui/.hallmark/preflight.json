@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-02",
+  "framework": "vanilla HTML/JS + Python HTTP server",
+  "genre": "editorial",
+  "fonts": {
+    "preserve": "CodeMirror monospace",
+    "add": "Latin Modern from gadmaj/website latex.css"
+  },
+  "palette": "existing green/white/ink",
+  "motion": "cut",
+  "source": "DESIGN.md and style.css"
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "date": "2026-11-02",
+    "macrostructure": "Workbench",
+    "theme": "established LaTeX.css + CodingBat",
+    "nav": "N3 Side-rail",
+    "footer": "Ft2 Inline-rule",
+    "enrichment": "physics diagrams in SVG and TikZ",
+    "brief": "Six study modes, all papers, equation sheet, and typeset questions; preserve the editor"
+  }
+]

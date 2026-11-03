@@ -219,7 +219,8 @@
         cm.setOption("mode", value === "cpp" ? "text/x-c++src" : {name: "python", version: 3});
         cm.getInputField().setAttribute("aria-label", value === "cpp" ? "C++ code" : "Python code");
       },
-      focus() { cm.focus(); }
+      focus() { cm.focus(); },
+      refresh() { cm.refresh(); }
     };
   };
 })();
