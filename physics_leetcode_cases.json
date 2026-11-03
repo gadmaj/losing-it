@@ -1,0 +1,601 @@
+[
+  {
+    "number": 1,
+    "title": "Push a Box",
+    "method": "workByForces",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "mass": 5,
+          "distance": 10,
+          "force": 20,
+          "angleDegrees": 60
+        },
+        "expected": [
+          100.00000000000003,
+          0.0,
+          0.0,
+          100.00000000000003
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "mass": 4,
+          "distance": 6.8,
+          "force": 16,
+          "angleDegrees": 30
+        },
+        "expected": [
+          94.22356393174692,
+          0.0,
+          0.0,
+          94.22356393174692
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "mass": 2,
+          "distance": 0,
+          "force": 50,
+          "angleDegrees": 45
+        },
+        "expected": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "title": "Vector Work and the Included Angle",
+    "method": "workAndAngle",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "force": [
+            3,
+            4
+          ],
+          "displacement": [
+            4,
+            3
+          ]
+        },
+        "expected": [
+          24,
+          16.260204708311967
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "force": [
+            8,
+            -5
+          ],
+          "displacement": [
+            2,
+            1
+          ]
+        },
+        "expected": [
+          11,
+          58.57043438516148
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "force": [
+            1,
+            0
+          ],
+          "displacement": [
+            -2,
+            0
+          ]
+        },
+        "expected": [
+          -2,
+          180.0
+        ]
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "title": "Push the Shopping Cart",
+    "method": "compareCartPush",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "force": 10,
+          "angleDegrees": 60,
+          "distance": 4
+        },
+        "expected": [
+          20.000000000000004,
+          "smaller",
+          "same"
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "force": 26,
+          "angleDegrees": 25,
+          "distance": 46.1
+        },
+        "expected": [
+          1086.3005135421288,
+          "smaller",
+          "same"
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "force": 9,
+          "angleDegrees": 0,
+          "distance": 3
+        },
+        "expected": [
+          27.0,
+          "same",
+          "same"
+        ]
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "title": "Work from a Force Graph",
+    "method": "workFromGraph",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              8,
+              0
+            ]
+          ],
+          "intervals": [
+            [
+              0,
+              4
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              0,
+              8
+            ]
+          ]
+        },
+        "expected": [
+          8,
+          8,
+          16
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              6
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              25,
+              -3
+            ],
+            [
+              30,
+              0
+            ]
+          ],
+          "intervals": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              30
+            ],
+            [
+              0,
+              30
+            ]
+          ]
+        },
+        "expected": [
+          60,
+          -15,
+          45
+        ]
+      },
+      {
+        "label": "Partial segments and signed work",
+        "input": {
+          "points": [
+            [
+              -2,
+              -2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              -2
+            ]
+          ],
+          "intervals": [
+            [
+              -1,
+              1
+            ],
+            [
+              -2,
+              2
+            ],
+            [
+              0.5,
+              2
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "expected": [
+          2,
+          0,
+          -0.75,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "number": 5,
+    "title": "Draw the Bow",
+    "method": "drawBow",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "drawDistance": 0.5,
+          "finalForce": 100
+        },
+        "expected": [
+          200.0,
+          25.0
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "drawDistance": 0.37,
+          "finalForce": 253
+        },
+        "expected": [
+          683.7837837837837,
+          46.805
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "drawDistance": 0.2,
+          "finalForce": 50
+        },
+        "expected": [
+          250.0,
+          5.0
+        ]
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "title": "Calibrate a Hanging Spring",
+    "method": "calibrateSpring",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "knownMass": 2,
+          "knownStretchCm": 10,
+          "newMass": 1,
+          "targetStretchCm": 20
+        },
+        "expected": [
+          5.0,
+          3.920000000000001
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "knownMass": 3.3,
+          "knownStretchCm": 2.2,
+          "newMass": 1.5,
+          "targetStretchCm": 4
+        },
+        "expected": [
+          1.0000000000000002,
+          1.1760000000000002
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "knownMass": 1,
+          "knownStretchCm": 0.5,
+          "newMass": 3,
+          "targetStretchCm": 0
+        },
+        "expected": [
+          1.5,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "title": "A Rock Changes Velocity",
+    "method": "rockEnergy",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "mass": 2,
+          "initialVelocity": [
+            3,
+            4
+          ],
+          "finalVelocity": [
+            0,
+            10
+          ]
+        },
+        "expected": [
+          25.0,
+          75.0
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "mass": 2.2,
+          "initialVelocity": [
+            5.6,
+            -1.4
+          ],
+          "finalVelocity": [
+            8,
+            4
+          ]
+        },
+        "expected": [
+          36.651999999999994,
+          51.348000000000006
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "mass": 1,
+          "initialVelocity": [
+            0,
+            -4
+          ],
+          "finalVelocity": [
+            0,
+            0
+          ]
+        },
+        "expected": [
+          8.0,
+          -8.0
+        ]
+      }
+    ]
+  },
+  {
+    "number": 8,
+    "title": "From Point A to Point B",
+    "method": "energyBetweenPoints",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "mass": 2,
+          "initialSpeed": 3,
+          "finalKineticEnergy": 25
+        },
+        "expected": [
+          9.0,
+          5.0,
+          16.0
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "mass": 0.5,
+          "initialSpeed": 1.5,
+          "finalKineticEnergy": 7.9
+        },
+        "expected": [
+          0.5625,
+          5.621387729022079,
+          7.3375
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "mass": 3,
+          "initialSpeed": 2,
+          "finalKineticEnergy": 0
+        },
+        "expected": [
+          6.0,
+          0.0,
+          -6.0
+        ]
+      }
+    ]
+  },
+  {
+    "number": 9,
+    "title": "Recover the Constant Force",
+    "method": "constantForceMotion",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "mass": 2,
+          "initialVelocity": [
+            1,
+            0
+          ],
+          "finalPosition": [
+            4,
+            4
+          ],
+          "time": 2
+        },
+        "expected": [
+          1.0,
+          4.47213595499958,
+          63.43494882292201,
+          5.0
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "mass": 5.42,
+          "initialVelocity": [
+            5.5,
+            -2.85
+          ],
+          "finalPosition": [
+            8.5,
+            5
+          ],
+          "time": 2
+        },
+        "expected": [
+          103.989475,
+          29.777955504030153,
+          103.15094868094471,
+          8.403719414640163
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "mass": 1,
+          "initialVelocity": [
+            0,
+            0
+          ],
+          "finalPosition": [
+            -1,
+            -1
+          ],
+          "time": 1
+        },
+        "expected": [
+          0.0,
+          2.8284271247461903,
+          225.0,
+          2.8284271247461903
+        ]
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "title": "Drop a Stone into a Well",
+    "method": "wellPotential",
+    "cases": [
+      {
+        "label": "Example",
+        "input": {
+          "mass": 1,
+          "heightAboveRim": 2,
+          "wellDepth": 3
+        },
+        "expected": [
+          19.6,
+          -29.400000000000002,
+          -49.0
+        ]
+      },
+      {
+        "label": "Original HW8 values",
+        "input": {
+          "mass": 0.3,
+          "heightAboveRim": 1.5,
+          "wellDepth": 4.8
+        },
+        "expected": [
+          4.41,
+          -14.112,
+          -18.522
+        ]
+      },
+      {
+        "label": "Further test",
+        "input": {
+          "mass": 2,
+          "heightAboveRim": 0,
+          "wellDepth": 5
+        },
+        "expected": [
+          0.0,
+          -98.0,
+          -98.0
+        ]
+      }
+    ]
+  }
+]

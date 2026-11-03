@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="practice-token" content="__PRACTICE_TOKEN__">
+  <title>Physics practice</title>
+  <link rel="stylesheet" href="/vendor/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="/vendor/codemirror/addon/hint/show-hint.css">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/vendor/codemirror/lib/codemirror.js" defer></script>
+  <script src="/vendor/codemirror/mode/python/python.js" defer></script>
+  <script src="/vendor/codemirror/mode/clike/clike.js" defer></script>
+  <script src="/vendor/codemirror/addon/hint/show-hint.js" defer></script>
+  <script src="/vendor/codemirror/addon/edit/matchbrackets.js" defer></script>
+  <script src="/editor.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Physics practice</h1>
+    <div class="set-controls">
+      <label for="practice-set">Practice set</label>
+      <select id="practice-set" disabled><option>Loading…</option></select>
+      <a id="source" target="_blank" rel="noopener" hidden>Original PDF</a>
+      <span id="progress">0 of 10 complete</span>
+    </div>
+  </header>
+  <div class="layout">
+    <nav aria-label="Practice problems">
+      <h2>Problems</h2>
+      <ol id="problem-list"></ol>
+      <label class="mobile-picker" for="problem-picker">Problem</label>
+      <select id="problem-picker"></select>
+    </nav>
+    <main>
+      <h2 id="title">Loading problems…</h2>
+      <p id="description" class="description"></p>
+      <figure id="diagram" class="diagram" hidden></figure>
+      <details id="example-details">
+        <summary>Example</summary>
+        <pre id="example"></pre>
+      </details>
+      <div class="editor-heading">
+        <div class="language-controls">
+          <label id="code-label" for="code">Python code</label>
+          <select id="language" aria-label="Programming language">
+            <option value="python">Python</option>
+            <option value="cpp">C++</option>
+          </select>
+        </div>
+        <button id="reset" class="quiet" type="button">Reset code</button>
+      </div>
+      <p id="language-help" hidden></p>
+      <div class="code-editor">
+        <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off"
+          autocorrect="off" aria-describedby="editor-help" wrap="off"></textarea>
+      </div>
+      <div class="editor-meta">
+        <span>4 spaces</span>
+        <span id="editor-position">Ln 1, Col 1</span>
+      </div>
+      <details id="editor-shortcuts" class="editor-shortcuts">
+        <summary>Editor shortcuts</summary>
+        <ul>
+          <li>Alt + drag: select a column across lines. Alt + click: add a cursor.</li>
+          <li>Ctrl + Alt + ↑ / ↓: add a cursor above or below. Esc: return to one cursor.</li>
+          <li>Tab / Shift + Tab: indent or unindent all selected lines.</li>
+          <li>Type two letters or press Ctrl + Space for defined variables. Tab / Enter: accept. Esc: dismiss.</li>
+          <li>Ctrl + Z / Ctrl + Shift + Z: undo / redo. Ctrl + Enter: run.</li>
+        </ul>
+      </details>
+      <div class="actions">
+        <button id="run" type="button" disabled>Run</button>
+        <span id="editor-help">Ctrl + Enter to run · Tab to indent</span>
+        <span id="saved">Saved in this browser</span>
+      </div>
+      <section class="output" aria-labelledby="output-heading">
+        <h3 id="output-heading">Output</h3>
+        <p id="status" role="status">Run your code to see results.</p>
+        <pre id="console" hidden></pre>
+        <div class="results-wrap" hidden>
+          <table>
+            <thead><tr><th scope="col">Test</th><th scope="col">Expected</th><th scope="col">Your result</th><th scope="col">Status</th></tr></thead>
+            <tbody id="results"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
